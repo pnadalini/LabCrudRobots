@@ -6,10 +6,12 @@ import { UiModule } from './ui/ui.module';
 import { LayoutComponent } from "./ui/layout/layout.component";
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AppRoutingModule } from './/app-routing.module';
+import { RobotsGridComponent } from './robots/robots-grid/robots-grid.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    RobotsGridComponent
   ],
   imports: [
     NgbModule,

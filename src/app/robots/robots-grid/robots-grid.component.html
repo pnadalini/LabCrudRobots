@@ -1,0 +1,38 @@
+<div class="row">
+  <div *ngFor="let robot of robots" class="col-md-2 text-center m-1">
+    <div class="border border-dark rounded-top font-weight-bold">{{robot.name}}</div>
+    <div class="border border-dark rounded-bottom text-left p-1">
+      <dl>
+        <dt class="d-inline mx-1">Model:</dt>
+        <dd class="d-inline mx-1">{{robot.model}}</dd>
+      </dl>
+      <!-- <div *ngFor="let key of robot">
+        oh yeah
+      </div> -->
+      <!-- 
+      <dd>{{robot.model}}</dd>
+      <dd>{{robot.manufacturer}}</dd>
+      <dd>{{robot.attack}}</dd>
+      <dd>{{robot.defense}}</dd> -->
+    </div>
+  </div>
+</div>
+<nav aria-label="Page navigation example">
+  <ul class="pagination">
+    <li class="page-item">
+      <a class="page-link" href="#" aria-label="Previous">
+        <span aria-hidden="true">&laquo;</span>
+        <span class="sr-only">Previous</span>
+      </a>
+    </li>
+    <li class="page-item"><a class="page-link" href="#">1</a></li>
+    <li class="page-item"><a class="page-link" href="#">2</a></li>
+    <li class="page-item"><a class="page-link" href="#">3</a></li>
+    <li class="page-item">
+      <a class="page-link" href="#" aria-label="Next">
+        <span aria-hidden="true">&raquo;</span>
+        <span class="sr-only">Next</span>
+      </a>
+    </li>
+  </ul>
+</nav>
