@@ -9,6 +9,7 @@ import { Guid } from "guid-typescript";
 export class RobotsGridComponent implements OnInit {
   robots: RobotModel[];
   robotCount: number;
+  objectKeys = Object.keys;
 
   constructor() { 
     var _robots=[{name:"MrRobot",model:"2018",manufacturer:"China",attack:"500",defense:"400"},{name:"Gundam",model:"2020",manufacturer:"Japan",attack:"550",defense:"350"},{name:"El Roboto",model:"2019",manufacturer:"Guatemala",attack:"600",defense:"290"},{name:"Le Automate",model:"2016",manufacturer:"France",attack:"405",defense:"580"},{name:"Wall-e",model:"2008",manufacturer:"USA",attack:"100",defense:"200"}];
