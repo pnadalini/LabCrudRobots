@@ -4,12 +4,12 @@
     <div class="border border-dark rounded-bottom text-left p-1">
       <table>
         <tbody>
-          <tr *ngFor="let key of objectKeys(robot)">
-            <div *ngIf="key != 'id' && key != 'name'">
-              <td class="font-weight-bold">{{key}}:</td>
-              <td>{{robot[key]}}</td>
-            </div>
-          </tr>
+          <ng-container *ngFor="let key of objectKeys(robot)">
+            <tr *ngIf="key != 'name' && key != 'id'">
+                <td class="font-weight-bold">{{key}}:</td>
+                <td>{{robot[key]}}</td>
+            </tr>
+          </ng-container>
         </tbody>
       </table>
     </div>
