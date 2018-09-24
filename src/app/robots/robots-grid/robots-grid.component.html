@@ -1,18 +1,24 @@
 <div class="row">
-  <div *ngFor="let robot of robots" class="col-lg-3 col-md-4 text-center mb-4">
-    <div class="border border-dark rounded-top font-weight-bold">{{robot.name}}</div>
-    <div class="border border-dark rounded-bottom text-left p-1">
-      <table>
-        <tbody>
-          <ng-container *ngFor="let key of objectKeys(robot)">
-            <tr *ngIf="key != 'name' && key != 'id'">
-                <td class="font-weight-bold">{{key}}:</td>
-                <td>{{robot[key]}}</td>
-            </tr>
-          </ng-container>
-        </tbody>
-      </table>
-    </div>
+  <a routerLink="/robots/add" class="col-sm-12 fa fa-plus mb-2 text-right">&nbsp; Create new</a>
+  <br>
+  <div *ngFor="let robot of robots" class="col-lg-3 col-md-4 rounded-top rounded-bottom">
+    <table class="table table-sm table-borderless rounded">
+      <th class="text-center border border-dark rounded-top" colspan="2">{{robot.name}}</th>
+      <tbody class="border border-dark">
+        <ng-container *ngFor="let key of objectKeys(robot)">
+          <tr *ngIf="key != 'name' && key != 'id'">
+            <td class="font-weight-bold">{{key}}:</td>
+            <td>{{robot[key]}}</td>
+          </tr>
+        </ng-container>
+        <tr>
+          <td colspan="2" class="text-right">
+            <a routerLink="/edit" class="fa fa-pencil mx-2"></a>
+            <a href="#" class="fa fa-trash"></a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
   </div>
 </div>
 <!-- <nav aria-label="Page navigation example">
