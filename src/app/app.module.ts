@@ -8,15 +8,15 @@ import { LayoutComponent } from "./ui/layout/layout.component";
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AppRoutingModule } from './/app-routing.module';
 import { RobotsGridComponent } from './robots/robots-grid/robots-grid.component';
-import { RobotFormComponent } from './robots/robot-form/robot-form.component';
 import { RobotAddComponent } from './robots/robot-add/robot-add.component';
+import { PageNotFoundComponent } from './common/page-not-found/page-not-found.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     RobotsGridComponent,
-    RobotAddComponent/*,
-    RobotFormComponent*/
+    RobotAddComponent,
+    PageNotFoundComponent
   ],
   imports: [
     NgbModule,

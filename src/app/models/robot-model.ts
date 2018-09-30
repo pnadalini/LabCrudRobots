@@ -14,8 +14,7 @@ export class RobotModel {
       for (let rKey in robot) {
         this[rKey] = robot[rKey];
       }
-    }
-    else {
+    } else {
       this.id = Guid.create();
     }
   }

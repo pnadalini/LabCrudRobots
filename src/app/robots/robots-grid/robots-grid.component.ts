@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { RobotModel } from "../../models/robot-model";
+import swal from "sweetalert";
 
 @Component({
   selector: 'app-robots-grid',
@@ -13,7 +14,7 @@ export class RobotsGridComponent implements OnInit {
   objectKeys = Object.keys;
 
   constructor() { 
-    if (localStorage.getItem('robotCount') !== undefined) {
+    if (localStorage.getItem('robotCount')) {
       this.getRobots();
     } else {
       var _robots=[{name:"MrRobot",model:"2018",manufacturer:"China",attack:"500",defense:"400"},{name:"Gundam",model:"2020",manufacturer:"Japan",attack:"550",defense:"350"},{name:"El Roboto",model:"2019",manufacturer:"Guatemala",attack:"600",defense:"290"},{name:"Le Automate",model:"2016",manufacturer:"France",attack:"405",defense:"580"},{name:"Wall-e",model:"2008",manufacturer:"USA",attack:"100",defense:"200"}];
@@ -34,7 +35,15 @@ export class RobotsGridComponent implements OnInit {
   ngOnInit() {
   }
 
-  getRobots(): void{
+  resetRobots(): void {
+    this.robotCount = 0;
+    this.robots.forEach((robot, index) => {
+      localStorage.setItem('robot' + index.toString(), JSON.stringify(robot));
+      this.robotCount++;
+    });
+  }
+
+  getRobots(): void {
     this.robots = [];
     let botAmount = localStorage.getItem('robotCount');
     
@@ -42,6 +51,23 @@ export class RobotsGridComponent implements OnInit {
       let newRobot: RobotModel = new RobotModel(localStorage.getItem('robot' + i.toString()));
       this.robots.push(newRobot);
     }
+  }
+
+  showWarning(index): void {
+    swal({
+      title: "Are you sure?",
+      text: "Once deleted, you won't be able to recover the robot information!",
+      icon: "warning",
+      buttons: ["Cancel", "Ok"]
+    }).then((willDelete) => {
+      if (willDelete) {
+        let botAmount = +localStorage.getItem('robotCount');
+        localStorage.removeItem('robot' + (--botAmount));
+        localStorage.setItem('robotCount', botAmount.toString());
+        this.robots.splice(index, 1);
+        this.resetRobots();
+      }
+    });
   }
 }
 

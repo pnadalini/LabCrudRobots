@@ -1,7 +1,7 @@
 <div class="row">
   <a routerLink="/robots/add" class="col-sm-12 fa fa-plus mb-2 text-right">&nbsp; Create new</a>
   <br>
-  <div *ngFor="let robot of robots" class="col-lg-3 col-md-4 rounded-top rounded-bottom">
+  <div *ngFor="let robot of robots; let i = index" class="col-lg-3 col-md-4 rounded-top rounded-bottom">
     <table class="table table-sm table-borderless rounded">
       <th class="text-center border border-dark rounded-top" colspan="2">{{robot.name}}</th>
       <tbody class="border border-dark">
@@ -13,8 +13,8 @@
         </ng-container>
         <tr>
           <td colspan="2" class="text-right">
-            <a routerLink="/edit" class="fa fa-pencil mx-2"></a>
-            <a href="#" class="fa fa-trash"></a>
+            <button routerLink="/edit" class="btn btn-link fa fa-pencil text-info">&nbsp; Edit</button>
+            <button type="button" (click)="showWarning(i)" class="btn btn-link fa fa-trash text-danger">&nbsp; Delete</button>
           </td>
         </tr>
       </tbody>
