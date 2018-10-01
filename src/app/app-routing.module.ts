@@ -9,11 +9,9 @@ const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'home', component: AppComponent },
   { path: 'robots', component: RobotsGridComponent, pathMatch: 'full' },
-  { path: 'robots/add', component: RobotAddComponent},
-  { path: '**', component: PageNotFoundComponent, pathMatch: 'full'}
-  /*,
-  { path: 'edit', component: RobotFormComponent},
-  //{ path: 'edit/:index', component: RobotFormComponent}*/
+  { path: 'robots/add', component: RobotAddComponent },
+  { path: 'robots/edit/:index', component: RobotAddComponent },
+  { path: '**', component: PageNotFoundComponent, pathMatch: 'full' }
 ];
 
 @NgModule({

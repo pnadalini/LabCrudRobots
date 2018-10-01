@@ -1,3 +1,8 @@
 .capitalize {
     text-transform: capitalize;
  }
+ .robot-name,
+ .robot-name:hover {
+    text-decoration: none;
+    color: black;
+ }

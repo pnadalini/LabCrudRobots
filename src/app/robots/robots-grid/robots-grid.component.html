@@ -1,9 +1,11 @@
 <div class="row">
-  <a routerLink="/robots/add" class="col-sm-12 fa fa-plus mb-2 text-right">&nbsp; Create new</a>
+  <button routerLink="/robots/add" class="btn btn-link col-sm-12 fa fa-plus mb-2 text-right">&nbsp; Create new</button>
   <br>
   <div *ngFor="let robot of robots; let i = index" class="col-lg-3 col-md-4 rounded-top rounded-bottom">
     <table class="table table-sm table-borderless rounded">
-      <th class="text-center border border-dark rounded-top" colspan="2">{{robot.name}}</th>
+      <th class="text-center border border-dark rounded-top" colspan="2">
+        <a routerLink="/robots/edit/{{i}}" class="robot-name">{{robot.name}}</a>
+      </th>
       <tbody class="border border-dark">
         <ng-container *ngFor="let key of objectKeys(robot)">
           <tr *ngIf="key != 'name' && key != 'id'">
@@ -13,7 +15,7 @@
         </ng-container>
         <tr>
           <td colspan="2" class="text-right">
-            <button routerLink="/edit" class="btn btn-link fa fa-pencil text-info">&nbsp; Edit</button>
+            <button routerLink="/robots/edit/{{i}}" class="btn btn-link fa fa-pencil text-info">&nbsp; Edit</button>
             <button type="button" (click)="showWarning(i)" class="btn btn-link fa fa-trash text-danger">&nbsp; Delete</button>
           </td>
         </tr>
@@ -21,22 +23,3 @@
     </table>
   </div>
 </div>
-<!-- <nav aria-label="Page navigation example">
-  <ul class="pagination">
-    <li class="page-item">
-      <a class="page-link" href="#" aria-label="Previous">
-        <span aria-hidden="true">&laquo;</span>
-        <span class="sr-only">Previous</span>
-      </a>
-    </li>
-    <li class="page-item"><a class="page-link" href="#">1</a></li>
-    <li class="page-item"><a class="page-link" href="#">2</a></li>
-    <li class="page-item"><a class="page-link" href="#">3</a></li>
-    <li class="page-item">
-      <a class="page-link" href="#" aria-label="Next">
-        <span aria-hidden="true">&raquo;</span>
-        <span class="sr-only">Next</span>
-      </a>
-    </li>
-  </ul>
-</nav> -->
