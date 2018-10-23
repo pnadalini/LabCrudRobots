@@ -1,4 +1,7 @@
-<div class="row">
+<div class="row" *ngIf="!pageReady">
+  <img class="mx-auto mt-5" src="assets/img/loading.svg" alt="loading...">
+</div>
+<div class="row" *ngIf="pageReady">
   <button routerLink="/robots/add" class="btn btn-link col-sm-12 fa fa-plus mb-2 text-right">&nbsp; Create new</button>
   <br>
   <div *ngFor="let robot of robots; let i = index" class="col-lg-3 col-md-4 rounded-top rounded-bottom">
