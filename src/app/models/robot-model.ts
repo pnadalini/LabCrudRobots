@@ -1,7 +1,5 @@
-import { Guid } from "guid-typescript";
-
 export class RobotModel {
-  id: Guid;
+  id: string;
   name: string = "";
   model: string = "";
   manufacturer: string = "";
@@ -14,8 +12,6 @@ export class RobotModel {
       for (let rKey in robot) {
         this[rKey] = robot[rKey];
       }
-    } else {
-      this.id = Guid.create();
     }
   }
 

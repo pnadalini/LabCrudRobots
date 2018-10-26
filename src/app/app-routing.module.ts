@@ -10,7 +10,7 @@ const routes: Routes = [
   { path: 'home', component: AppComponent },
   { path: 'robots', component: RobotsGridComponent, pathMatch: 'full' },
   { path: 'robots/add', component: RobotAddComponent },
-  { path: 'robots/edit/:index', component: RobotAddComponent },
+  { path: 'robots/edit/:id', component: RobotAddComponent },
   { path: '**', component: PageNotFoundComponent, pathMatch: 'full' }
 ];
 

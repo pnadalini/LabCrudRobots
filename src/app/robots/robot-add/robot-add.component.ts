@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { Router, ActivatedRoute } from "@angular/router";
+import { RobotApiService } from "../../services/robot-api.service";
 
 import { RobotModel } from "../../models/robot-model";
 
@@ -13,14 +14,18 @@ export class RobotAddComponent implements OnInit {
   objectKeys = Object.keys;
   robot: RobotModel;
   index: string;
+  id: string;
 
-  constructor(private router: Router, private route: ActivatedRoute) {
-    this.index = this.route.snapshot.paramMap.get('index');
-    if (!!this.index && (!localStorage.getItem('robot' + this.index))) {
+  constructor(private router: Router, private route: ActivatedRoute, private robotService: RobotApiService) {
+    this.id = this.route.snapshot.paramMap.get('id');
+    if (!!this.id) {
+      let response = this.robotService.readRobot(this.id);
       // If the user wanted to edit an unexisting robot, redirect him to add page
-      this.router.navigate(['/robots/add']);
-    }
-    this.robot = (!!this.index) ? new RobotModel(localStorage.getItem('robot' + this.index)) : this.robot = new RobotModel();
+      if (response.error)
+        this.router.navigate(['/robots/add']);
+      this.robot = response;
+    } else
+      this.robot = new RobotModel();
   }
 
   ngOnInit() {

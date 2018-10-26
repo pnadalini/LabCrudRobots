@@ -22,11 +22,12 @@ export class ApiService {
   /**
    * Method to call the API 
    * @param method GET, POST, PUT or DELETE
+   * @param urlParam Extra parameter of URL if needed
    * @param data Data sent to the API
    * @param callback Function with either the response or an error
    */
-  public apiCall(method: string, data: any, callback: Function) {
-    fetch(this.apiUrl, this.fetchData(method, data))
+  public apiCall(method: string, urlParam: string, data: any, callback: Function) {
+    fetch(this.apiUrl + urlParam, this.fetchData(method, data))
       .then(function (response) {
         if (response.status >= 400)
           return callback(response.statusText, response.status);

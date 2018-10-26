@@ -4,25 +4,16 @@
 <div class="row" *ngIf="pageReady">
   <button routerLink="/robots/add" class="btn btn-link col-sm-12 fa fa-plus mb-2 text-right">&nbsp; Create new</button>
   <br>
-  <div *ngFor="let robot of robots; let i = index" class="col-lg-3 col-md-4 rounded-top rounded-bottom">
-    <table class="table table-sm table-borderless rounded">
-      <th class="text-center border border-dark rounded-top" colspan="2">
-        <a routerLink="/robots/edit/{{i}}" class="robot-name">{{robot.name}}</a>
-      </th>
-      <tbody class="border border-dark">
-        <ng-container *ngFor="let key of objectKeys(robot)">
-          <tr *ngIf="key != 'name' && key != 'id'">
-            <td class="font-weight-bold">{{key}}:</td>
-            <td>{{robot[key]}}</td>
-          </tr>
-        </ng-container>
-        <tr>
-          <td colspan="2" class="text-right">
-            <button routerLink="/robots/edit/{{i}}" class="btn btn-link fa fa-pencil text-info">&nbsp; Edit</button>
-            <button type="button" (click)="showWarning(i)" class="btn btn-link fa fa-trash text-danger">&nbsp; Delete</button>
-          </td>
-        </tr>
-      </tbody>
-    </table>
+  <div *ngFor="let robot of robots" class="col-sm-6 col-md-4 col-lg-3 mb-4">
+    <div class="card text-center">
+      <img routerLink="/robots/edit/{{robot.id}}" class="card-img-top mt-2" [src]="imagePath(robot)" alt="Robot style">
+      <div class="card-body">
+        <h5 routerLink="/robots/edit/{{robot.id}}" class="robot-name">{{robot.name}}</h5>
+        <div class="btn-group" role="group" aria-label="Button options">
+            <button type="button" routerLink="/robots/edit/{{robot.id}}" class="fa fa-pencil btn btn-primary">&nbsp; Edit</button>
+            <button type="button" (click)="showWarning(robot.id)" class="fa fa-trash btn btn-danger">&nbsp; Delete</button>
+          </div>
+      </div>
+    </div>
   </div>
 </div>
