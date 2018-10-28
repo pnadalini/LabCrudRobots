@@ -15,6 +15,8 @@ export class RobotAddComponent implements OnInit {
   robot: RobotModel;
   index: string;
   id: string;
+  pageReady: boolean;
+  errorMessage: string;
 
   constructor(private router: Router, private route: ActivatedRoute, private robotService: RobotApiService) {
     this.id = this.route.snapshot.paramMap.get('id');
@@ -26,20 +28,24 @@ export class RobotAddComponent implements OnInit {
       this.robot = response;
     } else
       this.robot = new RobotModel();
+      this.pageReady = true;
   }
 
   ngOnInit() {
   }
 
   onSubmit() {
+    this.pageReady = false;
     if (!!this.index) {
-      localStorage.setItem('robot' + this.index, JSON.stringify(this.robot));
     } else {
-      let botAmount = +localStorage.getItem('robotCount');
-
-      localStorage.setItem('robot' + botAmount.toString(), JSON.stringify(this.robot));
-      localStorage.setItem('robotCount', (++botAmount).toString());
+      this.robotService.createRobot(this.robot, (response, errorCode) => {
+        if (errorCode) {
+          this.errorMessage = response;
+        } else {
+          this.router.navigate(['/robots']);
+        }
+        this.pageReady = true;
+      });
     }
-    this.router.navigate(['/robots']);
   }
 }

@@ -1,4 +1,7 @@
-<div class="container">
+<div class="row" *ngIf="!pageReady">
+  <img class="mx-auto mt-5" src="assets/img/loading.svg" alt="loading...">
+</div>
+<div class="container" *ngIf="pageReady">
   <div class="pull-right">
     <button class="btn btn-outline-info" routerLink="/robots"> <span class="fa fa-undo">&nbsp; Back</span></button>
   </div>
@@ -11,7 +14,7 @@
             <div class="form-group col-md-6" *ngIf="key != 'id'">
               <label for="{{key}}">{{key | titlecase}}</label>
               <input type="{{key == 'attack' || key == 'defense' ? 'number' : 'text'}}" class="form-control" id="{{key}}"
-                required [(ngModel)]="robot[key]" name="{{key}}" min="0" max="1000">
+                required [(ngModel)]="robot[key]" name="{{key}}" min="1" max="1000">
             </div>
           </ng-container>
         </div>

@@ -14,8 +14,11 @@ export class ApiService {
   private fetchData(method: string, data: any) {
     return {
       method: method,
-      data: data,
-      headers: new Headers()
+      headers: {
+        'Accept': 'application/json, text/plain, */*',
+        'Content-Type': 'application/json'
+      },
+      body: method.toUpperCase() != 'GET'? JSON.stringify(data) : undefined
     }
   }
 
@@ -37,7 +40,7 @@ export class ApiService {
         });
       })
       .catch(function (error) {
-        console.error(error);
+        console.log(error);
         callback(error);
       });
   }

@@ -1,15 +1,16 @@
 export class RobotModel {
-  id: string;
+  id: string = "";
   name: string = "";
   model: string = "";
   manufacturer: string = "";
-  attack: number = 0;
-  defense: number = 0;
+  attack: number = 1;
+  defense: number = 1;
 
-  constructor(jsonString?: string) {
-    if (jsonString) {
-      let robot = JSON.parse(jsonString);
-      for (let rKey in robot) {
+  constructor(robot?: any) {
+    if (robot) {
+      let { id, name, model, manufacturer, attack, defense } = this;
+      for (let rKey in { id, name, model, manufacturer, attack, defense }) {
+        if (!robot[rKey]) throw new TypeError('The received JSON isn not a valid robot');
         this[rKey] = robot[rKey];
       }
     }
