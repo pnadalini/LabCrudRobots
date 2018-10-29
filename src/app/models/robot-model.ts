@@ -10,7 +10,8 @@ export class RobotModel {
     if (robot) {
       let { id, name, model, manufacturer, attack, defense } = this;
       for (let rKey in { id, name, model, manufacturer, attack, defense }) {
-        if (!robot[rKey]) throw new TypeError('The received JSON isn not a valid robot');
+        // Validates if the object that wants to be created contains all the fields
+        if (!robot[rKey]) throw new TypeError('The received JSON is not a valid robot');
         this[rKey] = robot[rKey];
       }
     }

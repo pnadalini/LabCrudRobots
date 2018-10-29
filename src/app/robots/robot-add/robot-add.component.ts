@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { Router, ActivatedRoute } from "@angular/router";
 import { RobotApiService } from "../../services/robot-api.service";
+import swal from "sweetalert";
 
 import { RobotModel } from "../../models/robot-model";
 
@@ -16,7 +17,6 @@ export class RobotAddComponent implements OnInit {
   index: string;
   id: string;
   pageReady: boolean;
-  errorMessage: string;
 
   constructor(private router: Router, private route: ActivatedRoute, private robotService: RobotApiService) {
     this.id = this.route.snapshot.paramMap.get('id');
@@ -34,13 +34,29 @@ export class RobotAddComponent implements OnInit {
   ngOnInit() {
   }
 
+  private showError(errorMessage): void {
+    swal({
+      title: 'Something went wrong',
+      text: errorMessage,
+      icon: 'error'
+    });
+  }
+
   onSubmit() {
     this.pageReady = false;
-    if (!!this.index) {
+    if (!!this.id) {
+      this.robotService.updateRobot(this.robot, this.id, (response, errorCode) => {
+        if (errorCode) {
+          this.showError(response);
+        } else {
+          this.router.navigate(['/robots']);
+        }
+        this.pageReady = true;
+      });
     } else {
       this.robotService.createRobot(this.robot, (response, errorCode) => {
         if (errorCode) {
-          this.errorMessage = response;
+          this.showError(response);
         } else {
           this.router.navigate(['/robots']);
         }

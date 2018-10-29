@@ -18,7 +18,7 @@ export class ApiService {
         'Accept': 'application/json, text/plain, */*',
         'Content-Type': 'application/json'
       },
-      body: method.toUpperCase() != 'GET'? JSON.stringify(data) : undefined
+      body: method.toUpperCase() != 'GET' ? JSON.stringify(data) : undefined
     }
   }
 
@@ -34,6 +34,9 @@ export class ApiService {
       .then(function (response) {
         if (response.status >= 400)
           return callback(response.statusText, response.status);
+
+        if (response.status == 204)
+          return callback(response.statusText);
 
         response.json().then(function (data) {
           callback(data);

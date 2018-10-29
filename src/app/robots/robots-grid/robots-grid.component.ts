@@ -14,7 +14,6 @@ export class RobotsGridComponent implements OnInit {
   robotCount: number;
   objectKeys = Object.keys;
   pageReady: boolean;
-  errorMessage: string;
 
   constructor(private robotService: RobotApiService) {
     this.pageReady = false;
@@ -24,11 +23,11 @@ export class RobotsGridComponent implements OnInit {
   ngOnInit() {
   }
 
-  resetRobots(): void {
-    this.robotCount = 0;
-    this.robots.forEach((robot, index) => {
-      localStorage.setItem('robot' + index.toString(), JSON.stringify(robot));
-      this.robotCount++;
+  private showError(errorMessage): void {
+    swal({
+      title: 'Something went wrong',
+      text: errorMessage,
+      icon: 'error'
     });
   }
 
@@ -40,7 +39,7 @@ export class RobotsGridComponent implements OnInit {
     }
     this.robotService.getRobotList((response: any, errorCode?: number) => {
       if (errorCode) {
-        this.errorMessage = response;
+        this.showError(response);
       } else {
         this.robots = response;
       }
@@ -52,7 +51,7 @@ export class RobotsGridComponent implements OnInit {
     return 'assets/img/' + (robot.attack > robot.defense ? 'attack.png' : robot.attack < robot.defense ? 'defense.png' : 'overall.png');
   }
 
-  showWarning(index): void {
+  showWarning(id): void {
     swal({
       title: "Are you sure?",
       text: "Once deleted, you won't be able to recover the robot information!",
@@ -60,11 +59,17 @@ export class RobotsGridComponent implements OnInit {
       buttons: ["Cancel", "Ok"]
     }).then((willDelete) => {
       if (willDelete) {
-        let botAmount = +localStorage.getItem('robotCount');
-        localStorage.removeItem('robot' + (--botAmount));
-        localStorage.setItem('robotCount', botAmount.toString());
-        this.robots.splice(index, 1);
-        this.resetRobots();
+        this.pageReady = false;
+        this.robotService.deleteRobot(id, (response: any, errorCode?: number) => {
+          if (errorCode) {
+            this.showError(response);
+          } else {
+            swal('The robot has been deleted', {
+              icon: 'success'
+            });
+          }
+          this.getRobots();
+        });
       }
     });
   }
