@@ -7,10 +7,10 @@
   <div class="collapse navbar-collapse" [ngbCollapse]="isCollapsed">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item">
-        <a class="nav-link" routerLink="/home" routerLinkActive="active">Home</a>
+        <a class="nav-link" routerLink="/home" routerLinkActive="active" (click)="isCollapsed = true">Home</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" routerLink="/robots" routerLinkActive="active">Robots</a>
+        <a class="nav-link" routerLink="/robots" routerLinkActive="active" (click)="isCollapsed = true">Robots</a>
       </li>
     </ul>
     <div class="navbar-expand ml-auto navbar-nav">

@@ -1,10 +1,11 @@
 import { Injectable } from '@angular/core';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ApiService {
-  apiUrl: string = 'http://localhost:3000/api/v1/robots/';
+  apiUrl: string = environment.APIEndpoint || 'http://localhost:3000/api/v1/robots/';
 
   /**
    * Data needed for the fetch call

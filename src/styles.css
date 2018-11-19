@@ -10,3 +10,7 @@ html {
 .cursor-pointer {
   cursor: pointer;
 }
+
+.mb-6 {
+  margin-bottom: 4rem !important;
+}
