@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AppComponent } from "./app.component";
+import { AppComponent } from './app.component';
 import { RobotsGridComponent } from './robots/robots-grid/robots-grid.component';
-import { RobotAddComponent } from "./robots/robot-add/robot-add.component";
-import { PageNotFoundComponent } from "./common/page-not-found/page-not-found.component";
+import { RobotAddComponent } from './robots/robot-add/robot-add.component';
+import { PageNotFoundComponent } from './common/page-not-found/page-not-found.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -11,11 +11,11 @@ const routes: Routes = [
   { path: 'robots', component: RobotsGridComponent, pathMatch: 'full' },
   { path: 'robots/add', component: RobotAddComponent },
   { path: 'robots/edit/:id', component: RobotAddComponent },
-  { path: '**', component: PageNotFoundComponent, pathMatch: 'full' }
+  { path: '**', component: PageNotFoundComponent, pathMatch: 'full' },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

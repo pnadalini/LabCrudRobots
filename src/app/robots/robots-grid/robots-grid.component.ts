@@ -1,13 +1,13 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
-import { RobotModel } from "../../models/robot-model";
-import { RobotApiService } from "../../services/robot-api.service";
-import swal from "sweetalert";
+import { RobotModel } from '../../models/robot-model';
+import { RobotApiService } from '../../services/robot-api.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-robots-grid',
   encapsulation: ViewEncapsulation.None,
   templateUrl: './robots-grid.component.html',
-  styleUrls: ['./robots-grid.component.css']
+  styleUrls: ['./robots-grid.component.scss'],
 })
 export class RobotsGridComponent implements OnInit {
   robots: RobotModel[];
@@ -20,14 +20,13 @@ export class RobotsGridComponent implements OnInit {
     this.getRobots();
   }
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   private showError(errorMessage): void {
-    swal({
+    Swal.fire({
       title: 'Something went wrong',
       text: errorMessage,
-      icon: 'error'
+      icon: 'error',
     });
   }
 
@@ -52,21 +51,20 @@ export class RobotsGridComponent implements OnInit {
   }
 
   showWarning(id): void {
-    swal({
-      title: "Are you sure?",
+    Swal.fire({
+      title: 'Are you sure?',
       text: "Once deleted, you won't be able to recover the robot information!",
-      icon: "warning",
-      buttons: ["Cancel", "Ok"]
-    }).then((willDelete) => {
-      if (willDelete) {
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Ok',
+    }).then(result => {
+      if (result.value) {
         this.pageReady = false;
         this.robotService.deleteRobot(id, (response: any, errorCode?: number) => {
           if (errorCode) {
             this.showError(response);
           } else {
-            swal('The robot has been deleted', {
-              icon: 'success'
-            });
+            Swal.fire('Deleted!', 'The robot has been deleted.', 'success');
           }
           this.getRobots();
         });
@@ -74,5 +72,3 @@ export class RobotsGridComponent implements OnInit {
     });
   }
 }
-
-

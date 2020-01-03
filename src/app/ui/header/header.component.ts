@@ -4,14 +4,12 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
   selector: 'app-header',
   encapsulation: ViewEncapsulation.None,
   templateUrl: './header.component.html',
-  styleUrls: ['./header.component.css']
+  styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent implements OnInit {
   isCollapsed = true;
 
-  constructor() { }
+  constructor() {}
 
-  ngOnInit() {
-  }
-
+  ngOnInit() {}
 }

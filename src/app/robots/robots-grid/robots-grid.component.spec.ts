@@ -8,9 +8,8 @@ describe('RobotsGridComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ RobotsGridComponent ]
-    })
-    .compileComponents();
+      declarations: [RobotsGridComponent],
+    }).compileComponents();
   }));
 
   beforeEach(() => {

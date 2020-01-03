@@ -1,7 +1,14 @@
 <nav class="navbar navbar-expand-md navbar-dark bg-dark mb-2">
   <a class="navbar-brand" href="/">Fighting Robots</a>
-  <button class="navbar-toggler" type="button" (click)="isCollapsed = !isCollapsed" [attr.aria-expanded]="!isCollapsed" 
-    aria-controls="defaultNavBar" aria-expanded="false" aria-label="Toggle navigation">
+  <button
+    class="navbar-toggler"
+    type="button"
+    (click)="isCollapsed = !isCollapsed"
+    [attr.aria-expanded]="!isCollapsed"
+    aria-controls="defaultNavBar"
+    aria-expanded="false"
+    aria-label="Toggle navigation"
+  >
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse" [ngbCollapse]="isCollapsed">
@@ -14,14 +21,14 @@
       </li>
     </ul>
     <div class="navbar-expand ml-auto navbar-nav">
-        <div class="navbar-nav">
-          <a class="nav-item nav-link" href="https://stackoverflow.com/users/9801177/pnadalini" target="_blank">
-            <i class="fa fa-stack-overflow"></i>
-          </a>
-          <a class="nav-item nav-link" href="https://github.com/pnadalini" target="_blank">
-            <i class="fa fa-github"></i>
-          </a>
-        </div>
+      <div class="navbar-nav">
+        <a class="nav-item nav-link" href="https://stackoverflow.com/users/9801177/pnadalini" target="_blank">
+          <i class="fa fa-stack-overflow"></i>
+        </a>
+        <a class="nav-item nav-link" href="https://github.com/pnadalini" target="_blank">
+          <i class="fa fa-github"></i>
+        </a>
       </div>
+    </div>
   </div>
 </nav>

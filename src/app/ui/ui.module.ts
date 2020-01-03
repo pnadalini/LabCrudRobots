@@ -7,12 +7,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AppRoutingModule } from '..//app-routing.module';
 
 @NgModule({
-  imports: [
-    NgbModule,
-    CommonModule,
-    AppRoutingModule
-  ],
+  imports: [NgbModule, CommonModule, AppRoutingModule],
   declarations: [LayoutComponent, HeaderComponent, FooterComponent],
-  exports: [LayoutComponent]
+  exports: [LayoutComponent],
 })
-export class UiModule { }
+export class UiModule {}

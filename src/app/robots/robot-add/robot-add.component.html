@@ -1,9 +1,9 @@
 <div class="row" *ngIf="!pageReady">
-  <img class="mx-auto mt-5" src="assets/img/loading.svg" alt="loading...">
+  <img class="mx-auto mt-5" src="assets/img/loading.svg" alt="loading..." />
 </div>
 <div class="container" *ngIf="pageReady">
   <div class="pull-right">
-    <button class="btn btn-outline-info" routerLink="/robots"> <span class="fa fa-undo">&nbsp; Back</span></button>
+    <button class="btn btn-outline-info" routerLink="/robots"><span class="fa fa-undo">&nbsp; Back</span></button>
   </div>
   <h2>Add a Robot</h2>
   <div class="row">
@@ -12,14 +12,13 @@
         <div class="row">
           <ng-container *ngFor="let key of objectKeys(robot)">
             <div class="form-group col-md-6" *ngIf="key != 'id'">
-              <label for="{{key}}">{{key | titlecase}}</label>
-              <input type="{{key == 'attack' || key == 'defense' ? 'number' : 'text'}}" class="form-control" id="{{key}}"
-                required [(ngModel)]="robot[key]" name="{{key}}" min="1" max="1000">
+              <label for="{{ key }}">{{ key | titlecase }}</label>
+              <input type="{{ key == 'attack' || key == 'defense' ? 'number' : 'text' }}" class="form-control" id="{{ key }}" required [(ngModel)]="robot[key]" name="{{ key }}" min="1" max="1000" />
             </div>
           </ng-container>
         </div>
         <div class="row pull-right">
-          <button type="submit" class="btn btn-outline-primary" [disabled]="!robotForm.form.valid" [ngClass]="{'btn-outline-secondary': !robotForm.form.valid}">Submit</button>
+          <button type="submit" class="btn btn-outline-primary" [disabled]="!robotForm.form.valid" [ngClass]="{ 'btn-outline-secondary': !robotForm.form.valid }">Submit</button>
         </div>
       </form>
     </div>

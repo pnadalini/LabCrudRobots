@@ -1,18 +1,26 @@
 <div class="row" *ngIf="!pageReady">
-  <img class="mx-auto mt-5" src="assets/img/loading.svg" alt="loading...">
+  <img class="mx-auto mt-5" src="assets/img/loading.svg" alt="loading..." />
 </div>
 <div class="row" *ngIf="pageReady">
-  <button routerLink="/robots/add" class="btn btn-link col-sm-12 fa fa-plus mb-2 text-right">&nbsp; Create new</button>
-  <br>
+  <button routerLink="/robots/add" class="btn btn-link col-sm-12 fa fa-plus mb-2 text-right">
+    &nbsp; Create new
+  </button>
+  <br />
   <div *ngFor="let robot of robots" class="col-sm-6 col-md-4 col-lg-3 mb-4">
     <div class="card text-center">
-      <img routerLink="/robots/edit/{{robot.id}}" class="card-img-top mt-2 cursor-pointer" [src]="imagePath(robot)" alt="Robot style">
+      <img routerLink="/robots/edit/{{ robot.id }}" class="card-img-top mt-2 cursor-pointer" [src]="imagePath(robot)" alt="Robot style" />
       <div class="card-body">
-        <h5 routerLink="/robots/edit/{{robot.id}}" class="robot-name cursor-pointer">{{robot.name}}</h5>
+        <h5 routerLink="/robots/edit/{{ robot.id }}" class="robot-name cursor-pointer">
+          {{ robot.name }}
+        </h5>
         <div class="btn-group" role="group" aria-label="Button options">
-            <button type="button" routerLink="/robots/edit/{{robot.id}}" class="fa fa-pencil btn btn-primary">&nbsp; Edit</button>
-            <button type="button" (click)="showWarning(robot.id)" class="fa fa-trash btn btn-danger">&nbsp; Delete</button>
-          </div>
+          <button type="button" routerLink="/robots/edit/{{ robot.id }}" class="fa fa-pencil btn btn-primary">
+            &nbsp; Edit
+          </button>
+          <button type="button" (click)="showWarning(robot.id)" class="fa fa-trash btn btn-danger">
+            &nbsp; Delete
+          </button>
+        </div>
       </div>
     </div>
   </div>

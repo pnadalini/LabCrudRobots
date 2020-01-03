@@ -8,9 +8,8 @@ describe('RobotAddComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ RobotAddComponent ]
-    })
-    .compileComponents();
+      declarations: [RobotAddComponent],
+    }).compileComponents();
   }));
 
   beforeEach(() => {
