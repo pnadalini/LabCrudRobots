@@ -57,7 +57,7 @@ export class RobotsGridComponent implements OnInit {
       icon: 'warning',
       showCancelButton: true,
       confirmButtonText: 'Ok',
-    }).then(result => {
+    }).then((result) => {
       if (result.value) {
         this.pageReady = false;
         this.robotService.deleteRobot(id, (response: any, errorCode?: number) => {

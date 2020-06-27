@@ -42,7 +42,7 @@ export class RobotApiService {
   readRobot(id: string): any {
     if (id && !this.idRegex.test(id)) return { error: `The specified id: '${id}' is not valid` };
     // If the robot is in the list return the robot
-    if (this.robots && this.robots.find(x => x.id === id)) return this.robots.find(x => x.id === id);
+    if (this.robots && this.robots.find((x) => x.id === id)) return this.robots.find((x) => x.id === id);
     return { error: `The robot with the specified id: '${id}' was not found` };
   }
 
@@ -94,7 +94,7 @@ export class RobotApiService {
           return callback(`Unable to update the robot with id: ${id}\n` + response, errorCode);
         } else {
           // Modifies the robot with the updated information
-          this.robots.map(element => (element.id === id ? robot : element));
+          this.robots.map((element) => (element.id === id ? robot : element));
         }
         return callback(this.robots, errorCode);
       } catch (error) {
@@ -116,7 +116,7 @@ export class RobotApiService {
           return callback(`Unable to delete the robot with id: ${id}\n` + response, errorCode);
         } else {
           // Deletes the robot from the list
-          this.robots = this.robots.filter(robot => robot.id !== id);
+          this.robots = this.robots.filter((robot) => robot.id !== id);
         }
         return callback(this.robots, errorCode);
       } catch (error) {

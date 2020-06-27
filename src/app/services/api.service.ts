@@ -32,16 +32,16 @@ export class ApiService {
    */
   public apiCall(method: string, urlParam: string, data: any, callback: (response, errorCode?) => void) {
     fetch(this.apiUrl + urlParam, this.fetchData(method, data))
-      .then(response => {
+      .then((response) => {
         if (response.status >= 400) return callback(response.statusText, response.status);
 
         if (response.status === 204) return callback(response.statusText);
 
-        response.json().then(responseData => {
+        response.json().then((responseData) => {
           callback(responseData);
         });
       })
-      .catch(error => {
+      .catch((error) => {
         console.log(error);
         callback(error, 500);
       });
